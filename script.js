@@ -70,4 +70,19 @@ $(document).ready(function(){
             }
         }
     });
+
+    $('#send-message-btn').click(function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        // Call the sendMessage function
+        sendMessage();
+    });
+    
+    // Define the sendMessage function
+    function sendMessage() {
+        // Perform necessary actions to send the message
+    
+        // Show a pop-up box with a message
+        alert("Your message was sent!");
+    }
 });
