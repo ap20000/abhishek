@@ -47,6 +47,7 @@ $(document).ready(function(){
         backSpeed: 60,
         loop: true
     });
+  
 
     // owl carousel script
     $('.carousel').owlCarousel({
@@ -71,18 +72,35 @@ $(document).ready(function(){
         }
     });
 
-    $('#send-message-btn').click(function(event) {
-        event.preventDefault(); // Prevent form submission
-        
-        // Call the sendMessage function
-        sendMessage();
-    });
+    function sendEmail() {
+        // Get form values
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var subject = document.getElementById('subject').value;
+        var message = document.getElementById('message').value;
+      
+        // Validate form fields
+        if (name === '' || email === '' || subject === '' || message === '') {
+          alert('Please fill in all fields');
+          return;
+        }
+      
+        // Send the email (You need to replace this with your own email sending logic)
+        // For example, you can use a library like nodemailer in Node.js to send the email
+      
+        // Clear form fields
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('subject').value = '';
+        document.getElementById('message').value = '';
+      
+        // Show success message
+        alert('Message sent successfully!');
+      }
+      
     
-    // Define the sendMessage function
-    function sendMessage() {
-        // Perform necessary actions to send the message
     
-        // Show a pop-up box with a message
-        alert("Your message was sent!");
-    }
+    
+    
+    
 });
