@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio Website</title>
+    <title>Abhishek Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -13,6 +13,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
     <script src="path/to/typed.js"></script>
+    <script>
+        // Check if the user is online
+        function isOnline() {
+            return navigator.onLine;
+        }
+    
+        // Function to handle the offline scenario
+        function handleOffline() {
+            // Store the current page URL before redirecting
+            localStorage.setItem('offlineRedirect', window.location.href);
+            window.location.href = 'components/offline.html'; // Redirect to the offline page
+        }
+    
+        // Function to handle coming back online
+        function handleOnline() {
+            // Redirect to index.html when online
+            window.location.href = 'index.html';
+            // Clear the stored URL
+            localStorage.removeItem('offlineRedirect');
+        }
+    
+        // Check for online status and handle accordingly
+        if (!isOnline()) {
+            handleOffline();
+        }
+    
+        // Listen for online and offline events
+        window.addEventListener('online', handleOnline);
+        window.addEventListener('offline', handleOffline);
+    </script>
 
 </head>
 <body>
@@ -70,7 +100,7 @@
                     <div class="text">I'm Abhishek and I'm a <span class="typing-2"></span></div>
                     <p>
                         I'm a versatile professional experienced in front-end and back-end development, as well as UI/UX design. My goal is to create profit-generating websites that captivate users and drive conversions. With expertise in HTML, CSS, JavaScript, Python, PHP, and Node.js, I bring designs to life and build robust, scalable systems. My focus is on creating intuitive user interfaces that enhance usability and deliver exceptional experiences.</p>
-                    <a href="CV.pdf">Download CV</a>
+                    <a href="components/CV.pdf">Download CV</a>
                 </div>
             </div>
         </div>
@@ -228,32 +258,9 @@
         
     </footer>
 
-    <script src="script.js"></script>
+    <script src="components/script.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     
-    <script>
-        function sendEmail() {
-          // Configure the SMTP settings
-          Email.send({
-            SecureToken: "service_gkl2url", // Obtain your secure token from Email.js
-            To: "abhishekpatel46@gmail.com",
-            From: document.getElementById("email").value,
-            Subject: "New Contact form Enquiry",
-            Body:
-              "Name: " + document.getElementById("name").value +
-              "<br>Email: " + document.getElementById("email").value +
-              "<br>Subject: " + document.getElementById("subject").value +
-              "<br>Message: " + document.getElementById("message").value,
-          }).then(
-            (message) => {
-              alert("Message Sent Successfully");
-              document.getElementById("name").value = "";
-              document.getElementById("email").value = "";
-              document.getElementById("subject").value = "";
-              document.getElementById("message").value = "";
-            }
-          );
-        }
-      </script>
+   
 </body>
 </html>
